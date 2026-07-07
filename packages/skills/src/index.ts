@@ -1,3 +1,5 @@
+export { ClaudeClient } from './ClaudeClient.js';
+export type { ClaudeMessage, ClaudeResponse, ClaudeOptions } from './ClaudeClient.js';
 export { PromptBuilder } from './PromptBuilder.js';
 export type { PromptTemplate } from './PromptBuilder.js';
 export { SEOOptimizer } from './SEOOptimizer.js';

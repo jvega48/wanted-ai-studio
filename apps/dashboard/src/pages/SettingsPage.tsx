@@ -9,7 +9,7 @@ interface Credentials {
   youtube: { clientId: string; clientSecret: string; channelId: string; refreshToken: string };
   tiktok: { clientKey: string; clientSecret: string };
   obs: { host: string; port: number; password: string };
-  openai: { apiKey: string; model: string; ttsVoice: string };
+  anthropic: { apiKey: string; model: string };
   discord: { webhookUrl: string; clipWebhookUrl: string };
 }
 
@@ -18,7 +18,7 @@ const EMPTY: Credentials = {
   youtube: { clientId: '', clientSecret: '', channelId: '', refreshToken: '' },
   tiktok: { clientKey: '', clientSecret: '' },
   obs: { host: 'localhost', port: 4455, password: '' },
-  openai: { apiKey: '', model: 'gpt-4o', ttsVoice: 'nova' },
+  anthropic: { apiKey: '', model: 'claude-sonnet-4-6' },
   discord: { webhookUrl: '', clipWebhookUrl: '' },
 };
 
@@ -193,28 +193,18 @@ export function SettingsPage(): React.ReactElement {
           hint="Leave empty if OBS authentication is disabled" />
       </Section>
 
-      <Section title="OpenAI" icon={Settings}>
-        <Field label="API Key" type="password" value={form.openai.apiKey}
-          onChange={(v) => set('openai', 'apiKey', v)} placeholder="sk-..." />
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="text-xs font-medium text-gray-400 block mb-1.5">Model</label>
-            <select value={form.openai.model} onChange={(e) => set('openai', 'model', e.target.value)}
-              className="input w-full text-sm">
-              <option value="gpt-4o">GPT-4o</option>
-              <option value="gpt-4o-mini">GPT-4o Mini</option>
-              <option value="gpt-4-turbo">GPT-4 Turbo</option>
-            </select>
-          </div>
-          <div>
-            <label className="text-xs font-medium text-gray-400 block mb-1.5">TTS Voice</label>
-            <select value={form.openai.ttsVoice} onChange={(e) => set('openai', 'ttsVoice', e.target.value)}
-              className="input w-full text-sm">
-              {['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer'].map((v) => (
-                <option key={v} value={v}>{v}</option>
-              ))}
-            </select>
-          </div>
+      <Section title="Claude AI (Anthropic)" icon={Settings}>
+        <Field label="API Key" type="password" value={form.anthropic.apiKey}
+          onChange={(v) => set('anthropic', 'apiKey', v)} placeholder="sk-ant-..."
+          hint="Get your key at console.anthropic.com" />
+        <div>
+          <label className="text-xs font-medium text-gray-400 block mb-1.5">Model</label>
+          <select value={form.anthropic.model} onChange={(e) => set('anthropic', 'model', e.target.value)}
+            className="input w-full text-sm">
+            <option value="claude-sonnet-4-6">Claude Sonnet 4.6 (Recommended)</option>
+            <option value="claude-opus-4-8">Claude Opus 4.8 (Most Powerful)</option>
+            <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5 (Fastest)</option>
+          </select>
         </div>
       </Section>
 

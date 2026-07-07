@@ -49,9 +49,9 @@ export const MEMORY_DEFAULTS = {
 } as const;
 
 export const AI_DEFAULTS = {
-  defaultModel: 'gpt-4o',
-  fastModel: 'gpt-4o-mini',
-  embeddingModel: 'text-embedding-3-large',
+  defaultModel: 'claude-sonnet-4-6',
+  fastModel: 'claude-haiku-4-5-20251001',
+  embeddingModel: 'text-embedding-3-large', // OpenAI embeddings — Anthropic has no embedding API
   maxTokens: 4096,
   temperature: 0.7,
   topP: 1,

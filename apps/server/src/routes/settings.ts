@@ -32,10 +32,9 @@ const credentialsSchema = z.object({
     port: z.coerce.number().int().min(1).max(65535),
     password: z.string(),
   }),
-  openai: z.object({
+  anthropic: z.object({
     apiKey: z.string(),
     model: z.string(),
-    ttsVoice: z.string(),
   }),
   discord: z.object({
     webhookUrl: z.string(),
@@ -89,10 +88,9 @@ export const settingsRoutes: FastifyPluginAsync = async (app) => {
         port: incoming.obs.port || existing.obs.port,
         password: mergeField(incoming.obs.password, existing.obs.password),
       },
-      openai: {
-        apiKey: mergeField(incoming.openai.apiKey, existing.openai.apiKey),
-        model: incoming.openai.model || existing.openai.model,
-        ttsVoice: incoming.openai.ttsVoice || existing.openai.ttsVoice,
+      anthropic: {
+        apiKey: mergeField(incoming.anthropic.apiKey, existing.anthropic.apiKey),
+        model: incoming.anthropic.model || existing.anthropic.model,
       },
       discord: {
         webhookUrl: mergeField(incoming.discord.webhookUrl, existing.discord.webhookUrl),

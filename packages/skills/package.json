@@ -15,8 +15,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@wanted/shared": "workspace:*",
-    "openai": "^4.56.0"
+    "@anthropic-ai/sdk": "^0.55.0",
+    "@wanted/shared": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

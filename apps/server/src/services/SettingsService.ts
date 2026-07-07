@@ -28,10 +28,9 @@ export interface AppCredentials {
     port: number;
     password: string;
   };
-  openai: {
+  anthropic: {
     apiKey: string;
     model: string;
-    ttsVoice: string;
   };
   discord: {
     webhookUrl: string;
@@ -44,7 +43,7 @@ const DEFAULTS: AppCredentials = {
   youtube: { clientId: '', clientSecret: '', channelId: '', refreshToken: '' },
   tiktok: { clientKey: '', clientSecret: '' },
   obs: { host: 'localhost', port: 4455, password: '' },
-  openai: { apiKey: '', model: 'gpt-4o', ttsVoice: 'nova' },
+  anthropic: { apiKey: '', model: 'claude-sonnet-4-6' },
   discord: { webhookUrl: '', clipWebhookUrl: '' },
 };
 
@@ -103,9 +102,8 @@ export function applyToEnv(creds: AppCredentials): void {
     OBS_HOST: creds.obs.host,
     OBS_PORT: String(creds.obs.port),
     OBS_PASSWORD: creds.obs.password,
-    OPENAI_API_KEY: creds.openai.apiKey,
-    OPENAI_MODEL: creds.openai.model,
-    OPENAI_TTS_VOICE: creds.openai.ttsVoice,
+    ANTHROPIC_API_KEY: creds.anthropic.apiKey,
+    ANTHROPIC_MODEL: creds.anthropic.model,
     DISCORD_WEBHOOK_URL: creds.discord.webhookUrl,
     DISCORD_CLIP_WEBHOOK_URL: creds.discord.clipWebhookUrl,
   };

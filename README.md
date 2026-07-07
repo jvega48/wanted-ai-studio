@@ -38,7 +38,7 @@ An AI-powered streaming operating system that automates your live stream with 15
 - **Backend**: Fastify, Prisma, PostgreSQL, WebSocket
 - **Frontend**: React, TanStack Query, Zustand, Tailwind CSS, React Router
 - **Desktop**: Electron + electron-builder
-- **AI**: OpenAI API (GPT-4, TTS, Whisper)
+- **AI**: Anthropic Claude API (claude-sonnet-4-6 / claude-opus-4-8 / claude-haiku-4-5)
 - **Streaming**: OBS WebSocket v5, Twitch API, YouTube Data API v3, TikTok API
 
 ## Project Structure
@@ -89,10 +89,10 @@ cp .env.example .env
 ```
 
 Required credentials:
+- **Anthropic**: API Key (get it at console.anthropic.com) — powers all 15 AI agents
 - **Twitch**: Client ID, Client Secret, Access Token, Channel name
 - **YouTube**: OAuth Client ID + Secret, Refresh Token
 - **TikTok**: Client Key + Secret
-- **OpenAI**: API Key
 - **OBS**: Host, port (default 4455), password
 - **Discord**: Webhook URLs (optional)
 
