@@ -1,0 +1,64 @@
+{
+  "name": "@wanted/desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wanted AI Studio — Desktop Application",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:electron": "wait-on http://localhost:5173 && electron .",
+    "dev:vite": "vite",
+    "build": "tsc -p tsconfig.build.json && vite build && electron-builder",
+    "build:main": "tsc -p tsconfig.build.json",
+    "icons": "node scripts/generate-icons.mjs",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "build": {
+    "appId": "studio.wanted.ai",
+    "productName": "Wanted AI Studio",
+    "copyright": "Copyright © 2024 Wanted AI Studio",
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "icon": "resources/icon",
+    "win": {
+      "icon": "resources/icon.ico",
+      "target": [{ "target": "nsis", "arch": ["x64"] }]
+    },
+    "mac": {
+      "icon": "resources/icon.icns",
+      "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }],
+      "category": "public.app-category.video"
+    },
+    "linux": {
+      "icon": "resources/icon.png",
+      "target": [{ "target": "AppImage", "arch": ["x64"] }],
+      "category": "Video"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "@wanted/shared": "workspace:*",
+    "electron-updater": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "concurrently": "^8.0.0",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.0.0",
+    "sharp": "^0.33.0",
+    "typescript": "^5.4.0",
+    "wait-on": "^7.0.0"
+  }
+}

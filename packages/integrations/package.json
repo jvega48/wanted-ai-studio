@@ -1,0 +1,46 @@
+{
+  "name": "@wanted/integrations",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Platform integrations: Twitch, YouTube, Kick, TikTok, Discord",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./twitch": {
+      "import": "./dist/twitch/index.js",
+      "types": "./dist/twitch/index.d.ts"
+    },
+    "./youtube": {
+      "import": "./dist/youtube/index.js",
+      "types": "./dist/youtube/index.d.ts"
+    },
+    "./discord": {
+      "import": "./dist/discord/index.js",
+      "types": "./dist/discord/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@wanted/shared": "workspace:*",
+    "@twurple/api": "^7.0.0",
+    "@twurple/auth": "^7.0.0",
+    "@twurple/chat": "^7.0.0",
+    "@twurple/eventsub-ws": "^7.0.0",
+    "googleapis": "^140.0.0",
+    "undici": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "rimraf": "^6.0.0",
+    "typescript": "^5.5.0"
+  }
+}

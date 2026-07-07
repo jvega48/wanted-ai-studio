@@ -1,0 +1,29 @@
+{
+  "name": "@wanted/agent-core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Agent framework: BaseAgent, AgentManager, EventBus, all 15 agents",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@wanted/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "rimraf": "^6.0.0",
+    "typescript": "^5.5.0"
+  }
+}
